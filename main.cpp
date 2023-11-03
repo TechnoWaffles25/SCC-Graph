@@ -125,10 +125,29 @@ int main() {
 
     // Create some arcs between the nodes to form cycles
     sccGraph.addArcWeight(sccGrafoNode1, sccGrafoNode2, 5);
-    sccGraph.addArcWeight(sccGrafoNode2, sccGrafoNode3, 7);
-    sccGraph.addArcWeight(sccGrafoNode3, sccGrafoNode1, 8);  // This forms a cycle with nodes 1, 2, and 3
+    sccGraph.addArcWeight(sccGrafoNode2, sccGrafoNode3, 5);
+    sccGraph.addArcWeight(sccGrafoNode3, sccGrafoNode1, 5);  // This forms a cycle with nodes 1, 2, and 3
+
     sccGraph.addArcWeight(sccGrafoNode4, sccGrafoNode5, 10);
     sccGraph.addArcWeight(sccGrafoNode5, sccGrafoNode4, 10);  // This forms a cycle with nodes 4 and 5
+
+    sccGraph.addArcWeight(sccGrafoNode6, sccGrafoNode7, 1);  // Filters are very portable
+    sccGraph.addArcWeight(sccGrafoNode7, sccGrafoNode6, 1);  // Bags are very portable
+
+    sccGraph.addArcWeight(sccGrafoNode8, sccGrafoNode9, 2);  // Tripod heads are quite portable
+    sccGraph.addArcWeight(sccGrafoNode9, sccGrafoNode8, 2);  // Straps are quite portable
+
+    sccGraph.addArcWeight(sccGrafoNode10, sccGrafoNode11, 3);  // Remotes are moderately portable
+    sccGraph.addArcWeight(sccGrafoNode11, sccGrafoNode10, 3);  // Reflectors are moderately portable
+
+    sccGraph.addArcWeight(sccGrafoNode12, sccGrafoNode13, 4);  // Flash diffusers are not very portable
+    sccGraph.addArcWeight(sccGrafoNode13, sccGrafoNode12, 4);  // Lens cleaning kits are not very portable
+
+    sccGraph.addArcWeight(sccGrafoNode14, sccGrafoNode15, 5);  // Camera cleaning kits are not portable
+    sccGraph.addArcWeight(sccGrafoNode15, sccGrafoNode14, 5);  // Backdrops are not portable
+
+    sccGraph.addArcWeight(sccGrafoNode16, sccGrafoNode17, 6);  // Gimbals are not at all portable
+    sccGraph.addArcWeight(sccGrafoNode17, sccGrafoNode16, 6);  // Cameras are not at all portable
 
     // Call the StronglyConnectedComponents method and store the result
     vector<vector<INodo*>> sccs = sccGraph.StronglyConnectedComponents();
@@ -141,6 +160,5 @@ int main() {
         }
         cout << endl;
     }
-
     return 0;
 }
