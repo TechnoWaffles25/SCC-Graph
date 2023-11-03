@@ -83,21 +83,52 @@ int main() {
     Grafo sccGraph(true);
 
     // Create some nodes
-    Gear sccNode1, sccNode2, sccNode3, sccNode4, sccNode5;
+    Gear camera, lens, tripod, flash, memoryCard, filter, bag, tripodhead, strap, remote, 
+    reflector, flashDifussor, lensCleningKit, cameraCleaningKit, backdrop, gimbal, camera2;
+
+    camera.setGear("Camera");
+    lens.setGear("Lens");
+    tripod.setGear("Tripod");
+    flash.setGear("Flash");
+    memoryCard.setGear("Memory Card");
+    filter.setGear("Filter");
+    bag.setGear("Bag");
+    tripodhead.setGear("Tripod Head");
+    strap.setGear("Strap");
+    remote.setGear("Remote");
+    reflector.setGear("Reflector");
+    flashDifussor.setGear("Flash Difussor");
+    lensCleningKit.setGear("Lens Clening Kit");
+    cameraCleaningKit.setGear("Camera Cleaning Kit");
+    backdrop.setGear("Backdrop");
+    gimbal.setGear("Gimbal");
+    camera2.setGear("Second Camera");
 
     // Get the corresponding NodoGrafo for each Gear
-    NodoGrafo* sccGrafoNode1 = sccGraph.addNode(&sccNode1);
-    NodoGrafo* sccGrafoNode2 = sccGraph.addNode(&sccNode2);
-    NodoGrafo* sccGrafoNode3 = sccGraph.addNode(&sccNode3);
-    NodoGrafo* sccGrafoNode4 = sccGraph.addNode(&sccNode4);
-    NodoGrafo* sccGrafoNode5 = sccGraph.addNode(&sccNode5);
+    NodoGrafo* sccGrafoNode1 = sccGraph.addNode(&camera);
+    NodoGrafo* sccGrafoNode2 = sccGraph.addNode(&lens);
+    NodoGrafo* sccGrafoNode3 = sccGraph.addNode(&tripod);
+    NodoGrafo* sccGrafoNode4 = sccGraph.addNode(&flash);
+    NodoGrafo* sccGrafoNode5 = sccGraph.addNode(&memoryCard);
+    NodoGrafo* sccGrafoNode6 = sccGraph.addNode(&filter);
+    NodoGrafo* sccGrafoNode7 = sccGraph.addNode(&bag);
+    NodoGrafo* sccGrafoNode8 = sccGraph.addNode(&tripodhead);
+    NodoGrafo* sccGrafoNode9 = sccGraph.addNode(&strap);
+    NodoGrafo* sccGrafoNode10 = sccGraph.addNode(&remote);
+    NodoGrafo* sccGrafoNode11 = sccGraph.addNode(&reflector);
+    NodoGrafo* sccGrafoNode12 = sccGraph.addNode(&flashDifussor);
+    NodoGrafo* sccGrafoNode13 = sccGraph.addNode(&lensCleningKit);
+    NodoGrafo* sccGrafoNode14 = sccGraph.addNode(&cameraCleaningKit);
+    NodoGrafo* sccGrafoNode15 = sccGraph.addNode(&backdrop);
+    NodoGrafo* sccGrafoNode16 = sccGraph.addNode(&gimbal);
+    NodoGrafo* sccGrafoNode17 = sccGraph.addNode(&camera2);
 
     // Create some arcs between the nodes to form cycles
-    sccGraph.addArc(sccGrafoNode1, sccGrafoNode2);
-    sccGraph.addArc(sccGrafoNode2, sccGrafoNode3);
-    sccGraph.addArc(sccGrafoNode3, sccGrafoNode1);  // This forms a cycle with nodes 1, 2, and 3
-    sccGraph.addArc(sccGrafoNode4, sccGrafoNode5);
-    sccGraph.addArc(sccGrafoNode5, sccGrafoNode4);  // This forms a cycle with nodes 4 and 5
+    sccGraph.addArcWeight(sccGrafoNode1, sccGrafoNode2, 5);
+    sccGraph.addArcWeight(sccGrafoNode2, sccGrafoNode3, 7);
+    sccGraph.addArcWeight(sccGrafoNode3, sccGrafoNode1, 8);  // This forms a cycle with nodes 1, 2, and 3
+    sccGraph.addArcWeight(sccGrafoNode4, sccGrafoNode5, 10);
+    sccGraph.addArcWeight(sccGrafoNode5, sccGrafoNode4, 10);  // This forms a cycle with nodes 4 and 5
 
     // Call the StronglyConnectedComponents method and store the result
     vector<vector<INodo*>> sccs = sccGraph.StronglyConnectedComponents();
@@ -106,7 +137,7 @@ int main() {
     for (int i = 0; i < sccs.size(); ++i) {
         cout << "SCC " << i + 1 << ": ";
         for (INodo* nodo : sccs[i]) {
-            cout << nodo->getId() << " ";
+            cout << nodo->getId() << " "<< nodo->getGear() << " // ";
         }
         cout << endl;
     }

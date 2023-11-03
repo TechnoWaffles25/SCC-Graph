@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "INodo.h"
+#include <string>
 
 using namespace std;
 
@@ -11,16 +12,6 @@ class Gear : public INodo  {
         Gear(){
             this->setId(rand()*999);
         }
-
-        string getGear(){
-            return gear;
-        }
-
-        void setGear(string pGear){
-            this->gear = pGear;
-        }
-
-        private:
-            string gear;
+        
 };
 #endif
