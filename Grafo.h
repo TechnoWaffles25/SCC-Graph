@@ -48,6 +48,12 @@ class Grafo {
         int getSize(){
             return this->listaNodos->size();
         }
+        vector<NodoGrafo*>* getListNodos(){
+            return this->listaNodos;
+        }
+        map<int, NodoGrafo*>* getHashNodos(){
+            return this->hashNodos;
+        }
         
         NodoGrafo* addNode(INodo* pNodo){
             NodoGrafo* newNode = new NodoGrafo(pNodo);
